@@ -1,0 +1,11 @@
+<div class="pagination flex-m flex-w p-t-26">
+    {% if page_obj.has_other_pages %}
+        {% for p in paginator.page_range %}
+            {% if page_obj.number == p %}
+                <a href="{{ p }}" class="item-pagination flex-c-m trans-0-4 active-pagination">{{ p }}</a>
+            {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+                <a href="?page={{ p }}" class="item-pagination flex-c-m trans-0-4">{{ p }}</a>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</div>
