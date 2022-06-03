@@ -6,15 +6,15 @@
     </h4>
 
 
-    {% get_all_category as categories %}
-    <ul class="p-b-54">
-        {% for category in categories %}
-            <li class="p-t-4">
-                <a href="{% url 'category_list' category.slug %}" class="s-text13 active1 ">
-                    {{ category.name }}
-                </a>
-            </li>
-        {% endfor %}
+{#    {% get_all_category as categories %}#}
+{#    <ul class="p-b-54">#}
+{#        {% for category in categories %}#}
+{#            <li class="p-t-4">#}
+{#                <a href="{% url 'category_list' category.slug %}" class="s-text13 active1 ">#}
+{#                    {{ category.name }}#}
+{#                </a>#}
+{#            </li>#}
+{#        {% endfor %}#}
 
 
         {#                    <li class="p-t-4">#}

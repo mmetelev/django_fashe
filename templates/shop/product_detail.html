@@ -86,9 +86,11 @@
 
                             <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
                                 <!-- Button -->
-                                <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-                                    Add to Cart
-                                </button>
+                                <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                    {{ cart_product_form }}
+                                    {% csrf_token %}
+                                    <input class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4" type="submit" value="Add to cart">
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -177,9 +179,11 @@
 
                         <div class="block2-btn-addcart w-size1 trans-0-4">
                             <!-- Button -->
-                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                Add to Cart
-                            </button>
+                             <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                    {{ cart_product_form }}
+                                    {% csrf_token %}
+                                    <input class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4" type="submit" value="Add to cart">
+                                </form>
                         </div>
                     </div>
                     </div>

@@ -23,6 +23,9 @@ class Category(MPTTModel):
     def __str__(self):
         return self.name
 
+    # def get_absolute_url(self):
+    #     return reverse('shop:product_list_by_category', args=[self.slug])
+
 
 class Product(models.Model):
     """Product"""
@@ -37,7 +40,6 @@ class Product(models.Model):
         ('draft', 'Draft'),
         ('published', 'Published'),
     )
-    main_image = models.ImageField('product image', upload_to='products/%Y/%m/%d')
     name = models.CharField('product name', max_length=50)
     after_price_text = models.TextField('product text ', max_length=200)
     description_text = models.TextField('product description', max_length=500)
@@ -50,6 +52,7 @@ class Product(models.Model):
     is_sale = models.BooleanField('sale product', default=False)
     is_new = models.BooleanField('product is new', default=True)
     slug = models.SlugField('product url', max_length=100, unique=True)
+    main_image = models.ImageField('product image', upload_to='products/%Y/%m/%d')
 
     def __str__(self):
         return self.name
@@ -57,6 +60,9 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse('products_detail',
                        kwargs={'slug': self.category.name, 'product_slug': self.slug})
+
+    # def get_absolute_url(self):
+    #     return reverse('shop:product_detail', args=[self.id, self.slug])
 
 
 class ColorSize(models.Model):
@@ -88,7 +94,7 @@ class Review(models.Model):
     """Product reviews"""
     name = models.CharField('review author name', max_length=50)
     message = models.TextField('review message', max_length=500)
-    email = models.EmailField('author Email', max_length=100)
+    email = models.EmailField('author email', max_length=100)
     product = models.ForeignKey(
         Product,
         related_name='review',
